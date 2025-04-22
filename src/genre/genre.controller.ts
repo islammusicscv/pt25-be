@@ -1,4 +1,14 @@
-import { Controller } from '@nestjs/common';
+import {Body, Controller, Post} from '@nestjs/common';
+import {GenreService} from "./genre.service";
+import {CreateGenreDto} from "./create-genre.dto";
+import {Genre} from "../entities/genre.entity";
 
-@Controller('genre')
-export class GenreController {}
+@Controller('genres')
+export class GenreController {
+    constructor(private readonly genreService: GenreService) {}
+
+    @Post()
+    create(@Body() createGenreDto: CreateGenreDto):Promise<Genre> {
+        return this.genreService.create(createGenreDto);
+    }
+}
