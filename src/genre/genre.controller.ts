@@ -1,8 +1,8 @@
 import {Body, Controller, Delete, Get, Param, Patch, Post} from '@nestjs/common';
 import {GenreService} from "./genre.service";
-import {CreateGenreDto} from "./create-genre.dto";
 import {Genre} from "../entities/genre.entity";
 import {DeleteResult} from "typeorm";
+import {CreateGenreDto} from "./create-genre.dto";
 import {UpdateGenreDto} from "./update-genre.dto";
 
 @Controller('genres')
@@ -33,7 +33,4 @@ export class GenreController {
     delete(@Param('id') id: string):Promise<DeleteResult> {
         return this.genreService.delete(+id);
     }
-
-
-
 }
