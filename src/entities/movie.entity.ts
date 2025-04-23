@@ -1,4 +1,13 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
+import {Genre} from "./genre.entity";
 
 @Entity('movies')
 export class Movie {
@@ -14,4 +23,7 @@ export class Movie {
     createdAt: Date;
     @UpdateDateColumn()
     updatedAt: Date;
+    @ManyToOne(()=>Genre, (genre) => genre.movies)
+    @JoinColumn({name: 'genre_id'})
+    genre: Genre;
 }

@@ -5,7 +5,7 @@ import {Movie} from "../entities/movie.entity";
 import {CreateMovieDto} from "./create-movie.dto";
 import {UpdateMovieDto} from "./update-movie.dto";
 
-@Controller('movie')
+@Controller('movies')
 export class MovieController {
     constructor(private readonly movieService: MovieService) {}
 

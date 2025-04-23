@@ -1,4 +1,5 @@
-import {IsDate, IsNotEmpty, IsOptional, IsString} from "class-validator";
+import {IsDate, IsNotEmpty, IsNumber, IsOptional, IsString} from "class-validator";
+import {Type} from "class-transformer";
 
 
 export class CreateMovieDto {
@@ -12,5 +13,10 @@ export class CreateMovieDto {
 
     @IsOptional()
     @IsDate()
+    @Type(() => Date)
     releaseDate?: Date;
+
+    @IsNotEmpty()
+    @IsNumber()
+    genre:number;
 }

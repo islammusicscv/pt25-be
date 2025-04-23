@@ -1,4 +1,5 @@
-import {IsDate, IsOptional, IsString} from "class-validator";
+import {IsDate, IsNotEmpty, IsNumber, IsOptional, IsString} from "class-validator";
+import {Type} from "class-transformer";
 
 
 export class UpdateMovieDto {
@@ -10,5 +11,9 @@ export class UpdateMovieDto {
     description?: string;
     @IsOptional()
     @IsDate()
+    @Type(() => Date)
     releaseDate?: Date;
+    @IsOptional()
+    @IsNumber()
+    genre:number;
 }

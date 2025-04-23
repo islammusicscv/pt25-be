@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {DeleteResult, Repository} from "typeorm";
+import {DeepPartial, DeleteResult, Repository} from "typeorm";
 import {Movie} from "../entities/movie.entity";
 import {CreateMovieDto} from "./create-movie.dto";
 import {UpdateMovieDto} from "./update-movie.dto";
@@ -13,12 +13,12 @@ export class MovieService {
     ) {}
 
     create(createMovieDto: CreateMovieDto):Promise<Movie> {
-        const genre = this.movieRepository.create(createMovieDto);
+        const genre = this.movieRepository.create(createMovieDto as DeepPartial<Movie>);
         return this.movieRepository.save(genre);
     }
 
     async update(id:number,updateMovieDto:UpdateMovieDto):Promise<Movie | null> {
-        await this.movieRepository.update(id,updateMovieDto);
+        await this.movieRepository.update(id,updateMovieDto  as DeepPartial<Movie>);
         return this.movieRepository.findOneBy({id});
     }
 
