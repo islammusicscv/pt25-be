@@ -23,7 +23,7 @@ export class Movie {
     createdAt: Date;
     @UpdateDateColumn()
     updatedAt: Date;
-    @ManyToOne(()=>Genre, (genre) => genre.movies)
+    @ManyToOne(()=>Genre, (genre) => genre.movies, { eager: true })
     @JoinColumn({name: 'genre_id'})
     genre: Genre;
 }

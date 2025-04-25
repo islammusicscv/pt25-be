@@ -13,7 +13,4 @@ export class UpdateMovieDto {
     @IsDate()
     @Type(() => Date)
     releaseDate?: Date;
-    @IsOptional()
-    @IsNumber()
-    genre:number;
 }

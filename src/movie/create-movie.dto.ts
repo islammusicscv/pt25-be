@@ -15,8 +15,4 @@ export class CreateMovieDto {
     @IsDate()
     @Type(() => Date)
     releaseDate?: Date;
-
-    @IsNotEmpty()
-    @IsNumber()
-    genre:number;
 }
